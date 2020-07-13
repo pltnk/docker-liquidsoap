@@ -25,7 +25,7 @@ RUN apt update && apt upgrade -y && \
 RUN groupadd -g 999 radio && \
     useradd -m -r -u 999 -s /bin/bash -g radio radio && \
     mkdir /etc/liquidsoap && \
-    chown -R /etc/liquidsoap radio
+    chown -R radio /etc/liquidsoap
 
 USER radio
 
