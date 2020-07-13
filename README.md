@@ -6,7 +6,7 @@ Just mount your Liquidsoap script and you are good to go!
 You can either pull the image from Dockerhub \
 `docker pull pltnk/liquidsoap` \
 or build it yourself \
-`docker build -t pltnk/icecast2 github.com/pltnk/docker-liquidsoap`
+`docker build -t pltnk/liquidsoap github.com/pltnk/docker-liquidsoap`
 
 ### Configuration:
 Change the name of your Liquidsoap script file to `script.liq` \
@@ -20,7 +20,7 @@ pltnk/liquidsoap
 ```
 #### docker-compose.yml
 ```
-icecast2:
+liquidsoap:
   image: pltnk/liquidsoap
   container_name: liquidsoap
   restart: always
