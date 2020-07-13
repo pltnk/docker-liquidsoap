@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  liquidsoap:
+    image: pltnk/liquidsoap
+    container_name: liquidsoap
+    restart: always
+    volumes:
+      - /path/to/your/script.liq:/etc/liquidsoap/script.liq
