@@ -1,7 +1,6 @@
 FROM ubuntu:bionic
 
 ENV OCAML_VERSION "4.08.0"
-ENV LIQUIDSOAP_CONF "/radio/tech/radio.liq"
 
 # install liquidsoap dependencies
 RUN apt update && apt upgrade -y && \
@@ -24,7 +23,9 @@ RUN apt update && apt upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 999 radio && \
-    useradd -m -r -u 999 -s /bin/bash -g radio radio
+    useradd -m -r -u 999 -s /bin/bash -g radio radio && \
+    mkdir /etc/liquidsoap && \
+    chown -R /etc/liquidsoap radio
 
 USER radio
 
@@ -38,4 +39,4 @@ RUN opam depext -y taglib mad lame vorbis cry samplerate liquidsoap && \
     opam install -y taglib mad lame vorbis cry samplerate liquidsoap && \
     eval $(opam env)
 
-CMD eval $(opam env) && liquidsoap ${LIQUIDSOAP_CONF}
+CMD eval $(opam env) && liquidsoap /etc/liquidsoap/script.liq
