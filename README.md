@@ -2,6 +2,8 @@
 Dockerfile for running [Liquidsoap](https://www.liquidsoap.info/) in a container. \
 Just mount your Liquidsoap script, music directory and you are good to go!
 
+Works well with containerized [icecast2](https://icecast.org/): [pltnk/docker-icecast2](https://github.com/pltnk/docker-icecast2)
+
 ### Installation:
 You can either pull the image from Dockerhub \
 `docker pull pltnk/liquidsoap` \
