@@ -41,6 +41,7 @@ RUN opam init -a -y -c ${OCAML_VERSION} --disable-sandboxing && \
 # install liquidsoap
 RUN opam depext -y ${OPAM_PACKAGES} && \
     opam install -y ${OPAM_PACKAGES} && \
-    eval $(opam env) && opam clean -a
+    eval $(opam env) && \
+    opam clean -acryv --logs --unused-repositories
 
 CMD eval $(opam env) && liquidsoap /etc/liquidsoap/script.liq
