@@ -24,8 +24,8 @@ RUN apt update && apt upgrade -y && \
 
 RUN groupadd -g 999 radio && \
     useradd -m -r -u 999 -s /bin/bash -g radio radio && \
-    mkdir /radio && \
-    chown -R radio /radio
+    mkdir /etc/liquidsoap && chown -R radio /etc/liquidsoap && \
+    mkdir /music && chown -R radio /music
 
 USER radio
 
@@ -39,4 +39,4 @@ RUN opam depext -y taglib mad lame vorbis cry samplerate liquidsoap && \
     opam install -y taglib mad lame vorbis cry samplerate liquidsoap && \
     eval $(opam env)
 
-CMD eval $(opam env) && liquidsoap /radio/script.liq
+CMD eval $(opam env) && liquidsoap /etc/liquidsoap/script.liq
