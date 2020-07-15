@@ -11,15 +11,15 @@ or build it yourself \
 `docker build -t pltnk/liquidsoap github.com/pltnk/docker-liquidsoap`
 
 ### Configuration:
-- Mount your Liquidsoap script file to `/radio/script.liq`
-- Mount your music directory to `/radio/music`
-- In your Liquidsoap script change path to your music directory to `/radio/music`
+- Mount your Liquidsoap script file to `/etc/liquidsoap/script.liq`
+- Mount your music directory to `/music`
+- In your Liquidsoap script change path to your music directory to `/music`
 
 #### docker run
 ```
 docker run --name liquidsoap -d --restart=always \
---volume /path/to/your/script.liq:/radio/script.liq \
---volume /path/to/your/music:/radio/music \
+--volume /path/to/your/script.liq:/etc/liquidsoap/script.liq \
+--volume /path/to/your/music:/music \
 pltnk/liquidsoap
 ```
 #### docker-compose.yml
@@ -29,6 +29,6 @@ liquidsoap:
   container_name: liquidsoap
   restart: always
   volumes:
-    - /path/to/your/script.liq:/radio/script.liq
-    - /path/to/your/music:/radio/music
+    - /path/to/your/script.liq:/etc/liquidsoap/script.liq
+    - /path/to/your/music:/music
 ```
