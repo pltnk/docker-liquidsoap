@@ -1,6 +1,7 @@
 FROM ubuntu:bionic
 
 ENV OCAML_VERSION "4.08.0"
+ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
 
 # install liquidsoap dependencies
 RUN apt update && apt upgrade -y && \
@@ -35,8 +36,8 @@ RUN opam init -a -y -c ${OCAML_VERSION} --disable-sandboxing && \
     opam install -y depext
 
 # install liquidsoap
-RUN opam depext -y taglib mad lame vorbis cry samplerate liquidsoap && \
-    opam install -y taglib mad lame vorbis cry samplerate liquidsoap && \
+RUN opam depext -y ${OPAM_PACKAGES} && \
+    opam install -y ${OPAM_PACKAGES} && \
     eval $(opam env)
 
 CMD eval $(opam env) && liquidsoap /etc/liquidsoap/script.liq
