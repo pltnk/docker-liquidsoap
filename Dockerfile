@@ -1,6 +1,10 @@
 FROM ubuntu:bionic
 
+LABEL maintainer="Kirill Plotnikov <init@pltnk.dev>" \
+      github="https://github.com/pltnk/docker-liquidsoap"
+
 ENV OCAML_VERSION "4.08.0"
+ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
 
 # install liquidsoap dependencies
 RUN apt update && apt upgrade -y && \
@@ -24,8 +28,8 @@ RUN apt update && apt upgrade -y && \
 
 RUN groupadd -g 999 radio && \
     useradd -m -r -u 999 -s /bin/bash -g radio radio && \
-    mkdir /radio && \
-    chown -R radio /radio
+    mkdir /etc/liquidsoap /music && \
+    chown -R radio /etc/liquidsoap /music
 
 USER radio
 
@@ -35,8 +39,9 @@ RUN opam init -a -y -c ${OCAML_VERSION} --disable-sandboxing && \
     opam install -y depext
 
 # install liquidsoap
-RUN opam depext -y taglib mad lame vorbis cry samplerate liquidsoap && \
-    opam install -y taglib mad lame vorbis cry samplerate liquidsoap && \
-    eval $(opam env)
+RUN opam depext -y ${OPAM_PACKAGES} && \
+    opam install -y ${OPAM_PACKAGES} && \
+    eval $(opam env) && \
+    opam clean -acryv --logs --unused-repositories
 
-CMD eval $(opam env) && liquidsoap /radio/script.liq
+CMD eval $(opam env) && liquidsoap /etc/liquidsoap/script.liq
