@@ -28,8 +28,8 @@ RUN apt update && apt upgrade -y && \
 
 RUN groupadd -g 999 radio && \
     useradd -m -r -u 999 -s /bin/bash -g radio radio && \
-    mkdir /etc/liquidsoap && chown -R radio /etc/liquidsoap && \
-    mkdir /music && chown -R radio /music
+    mkdir /etc/liquidsoap /music && \
+    chown -R radio /etc/liquidsoap /music
 
 USER radio
 
