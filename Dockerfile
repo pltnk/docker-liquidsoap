@@ -1,5 +1,8 @@
 FROM ubuntu:bionic
 
+LABEL maintainer="Kirill Plotnikov <init@pltnk.dev>" \
+      github="https://github.com/pltnk/docker-liquidsoap"
+
 ENV OCAML_VERSION "4.08.0"
 ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
 
