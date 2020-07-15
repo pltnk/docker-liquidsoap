@@ -8,3 +8,4 @@ services:
     restart: always
     volumes:
       - /path/to/your/script.liq:/etc/liquidsoap/script.liq
+      - /path/to/your/music:/music
