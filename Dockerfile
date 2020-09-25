@@ -8,10 +8,8 @@ ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
 
 # install liquidsoap dependencies
 RUN apt update && apt upgrade -y && \
-    apt install -y software-properties-common && \
-    add-apt-repository ppa:avsm/ppa && \
-    apt update && \
-    apt install -y opam \
+    apt install -y \
+    opam \
     gcc \
     libmad0-dev \
     libmp3lame-dev \
