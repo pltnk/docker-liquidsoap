@@ -3,7 +3,6 @@ FROM ubuntu:focal
 LABEL maintainer="Kirill Plotnikov <init@pltnk.dev>" \
       github="https://github.com/pltnk/docker-liquidsoap"
 
-ENV OCAML_VERSION "4.11.1"
 ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -33,7 +32,7 @@ RUN groupadd -g 999 radio && \
 USER radio
 
 # setup opam
-RUN opam init -a -y -c ${OCAML_VERSION} --disable-sandboxing && \
+RUN opam init -a -y --disable-sandboxing && \
     eval $(opam env) && \
     opam install -y depext
 
