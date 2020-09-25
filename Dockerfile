@@ -3,7 +3,7 @@ FROM ubuntu:focal
 LABEL maintainer="Kirill Plotnikov <init@pltnk.dev>" \
       github="https://github.com/pltnk/docker-liquidsoap"
 
-ENV OCAML_VERSION "4.08.0"
+ENV OCAML_VERSION "4.11.1"
 ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
 
 # install liquidsoap dependencies
