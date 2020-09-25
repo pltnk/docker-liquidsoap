@@ -5,6 +5,7 @@ LABEL maintainer="Kirill Plotnikov <init@pltnk.dev>" \
 
 ENV OCAML_VERSION "4.11.1"
 ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
+ENV DEBIAN_FRONTEND=noninteractive
 
 # install liquidsoap dependencies
 RUN apt update && apt upgrade -y && \
