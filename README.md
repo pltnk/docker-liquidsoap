@@ -1,4 +1,9 @@
 ## docker-liquidsoap
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/pltnk/liquidsoap)](https://hub.docker.com/r/pltnk/liquidsoap)
+[![Docker Image Size](https://img.shields.io/docker/image-size/pltnk/liquidsoap)](https://hub.docker.com/r/pltnk/liquidsoap)
+[![Docker Pulls](https://img.shields.io/docker/pulls/pltnk/liquidsoap)](https://hub.docker.com/r/pltnk/liquidsoap)
+[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/pltnk/liquidsoap)](https://hub.docker.com/r/pltnk/liquidsoap)
+
 Dockerfile for running [Liquidsoap](https://www.liquidsoap.info/) in a container. \
 Just mount your Liquidsoap script, music directory and you are good to go!
 
