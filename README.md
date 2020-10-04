@@ -1,6 +1,6 @@
 ## docker-liquidsoap
 
-[![Travis CI Build Status](https://img.shields.io/travis/com/pltnk/liquidsoap)](https://travis-ci.com/github/pltnk/docker-liquidsoap)
+[![Travis CI Build Status](https://img.shields.io/travis/com/pltnk/docker-liquidsoap)](https://travis-ci.com/github/pltnk/docker-liquidsoap)
 [![Docker Image Size](https://img.shields.io/docker/image-size/pltnk/liquidsoap)](https://hub.docker.com/r/pltnk/liquidsoap)
 [![Docker Pulls](https://img.shields.io/docker/pulls/pltnk/liquidsoap)](https://hub.docker.com/r/pltnk/liquidsoap)
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/pltnk/liquidsoap)](https://hub.docker.com/r/pltnk/liquidsoap)
