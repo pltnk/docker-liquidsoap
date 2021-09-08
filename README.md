@@ -11,13 +11,17 @@ Just mount your Liquidsoap script, music directory and you are good to go!
 
 Works well with containerized [icecast2](https://icecast.org/): [pltnk/docker-icecast2](https://github.com/pltnk/docker-icecast2)
 
-### Installation:
-You can either pull the image from Dockerhub \
-`docker pull pltnk/liquidsoap` \
-or build it yourself \
-`docker build -t pltnk/liquidsoap github.com/pltnk/docker-liquidsoap`
+### Installation
+- Pull the image from one of public Docker registries
+  - Docker Hub `docker pull pltnk/liquidsoap`
+  - GitHub Packages `docker pull ghcr.io/pltnk/liquidsoap`
+  - Quay.io `docker pull quay.io/pltnk/liquidsoap`
+- Build the image yourself
+  - `docker build -t pltnk/liquidsoap github.com/pltnk/docker-liquidsoap`
+  - Add build arg `LIQUIDSOAP_VERSION` to specify the version of Liquidsoap to use in the image, check available versions [here](https://opam.ocaml.org/packages/liquidsoap/). \
+  Example: `docker build -t pltnk/liquidsoap:1.4.4 --build-arg LIQUIDSOAP_VERSION=1.4.4 github.com/pltnk/docker-liquidsoap`
 
-### Configuration:
+### Configuration
 - Mount your Liquidsoap script file to `/etc/liquidsoap/script.liq`
 - Mount your music directory to `/music`
 - In your Liquidsoap script change path to your music directory to `/music`
