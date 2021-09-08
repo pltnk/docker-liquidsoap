@@ -3,7 +3,6 @@ FROM ubuntu:focal
 LABEL maintainer="Kirill Plotnikov <init@pltnk.dev>" \
       github="https://github.com/pltnk/docker-liquidsoap"
 
-ENV OPAM_PACKAGES "taglib mad lame vorbis cry samplerate liquidsoap"
 ENV DEBIAN_FRONTEND=noninteractive
 
 # install liquidsoap dependencies
@@ -24,10 +23,14 @@ RUN apt update && apt upgrade -y && \
     apt autoremove && apt clean && \
     rm -rf /var/lib/apt/lists/*
 
+# add user for liquidsoap and create necessary directories
 RUN groupadd -g 999 radio && \
     useradd -m -r -u 999 -s /bin/bash -g radio radio && \
     mkdir /etc/liquidsoap /music && \
     chown -R radio /etc/liquidsoap /music
+
+ARG LIQUIDSOAP_VERSION
+ARG OPAM_PACKAGES="liquidsoap${LIQUIDSOAP_VERSION:+.$LIQUIDSOAP_VERSION} taglib mad lame vorbis cry samplerate"
 
 USER radio
 
