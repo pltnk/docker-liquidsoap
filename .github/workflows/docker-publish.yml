@@ -56,6 +56,18 @@ jobs:
             ${{ env.GITHUB_PACKAGES }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:1.4.4
             ${{ env.QUAY_IO }}/${{ secrets.QUAY_USERNAME }}/${{ env.IMAGE_NAME }}:1.4.4
       
+      - name: Build and push Docker image with Liquidsoap 2.0.0
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          build-args: |
+            LIQUIDSOAP_VERSION=2.0.0
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:2.0.0
+            ${{ env.GITHUB_PACKAGES }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:2.0.0
+            ${{ env.QUAY_IO }}/${{ secrets.QUAY_USERNAME }}/${{ env.IMAGE_NAME }}:2.0.0
+      
       - name: Build and push Docker image with the latest version of Liquidsoap
         uses: docker/build-push-action@v2
         with:
