@@ -19,7 +19,8 @@ RUN apt update && apt upgrade -y && \
     libvorbis-dev \
     m4 \
     make \
-    pkg-config && \
+    pkg-config \
+    zlib1g-dev && \
     apt autoremove && apt clean && \
     rm -rf /var/lib/apt/lists/*
 
