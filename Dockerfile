@@ -17,6 +17,7 @@ RUN apt update && apt upgrade -y && \
     libsamplerate0-dev \
     libtag1-dev \
     libvorbis-dev \
+    libssl-dev \
     m4 \
     make \
     pkg-config \
@@ -31,7 +32,7 @@ RUN groupadd -g 999 radio && \
     chown -R radio /etc/liquidsoap /music
 
 ARG LIQUIDSOAP_VERSION
-ARG OPAM_PACKAGES="liquidsoap${LIQUIDSOAP_VERSION:+.$LIQUIDSOAP_VERSION} taglib mad lame vorbis cry samplerate"
+ARG OPAM_PACKAGES="liquidsoap${LIQUIDSOAP_VERSION:+.$LIQUIDSOAP_VERSION} taglib mad lame vorbis cry samplerate ssl"
 
 USER radio
 
