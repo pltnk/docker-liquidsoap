@@ -1,0 +1,33 @@
+FROM ubuntu:resolute
+
+LABEL maintainer="Kirill Plotnikov <init@pltnk.dev>" \
+      github="https://github.com/pltnk/docker-liquidsoap"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# install liquidsoap dependencies
+RUN apt update && apt upgrade -y && \
+    apt install -y \
+    build-essential \
+    libboost-dev \
+    libcppunit-dev \
+    libutfcpp-dev \
+    debhelper-compat=13 \
+    pkg-kde-tools \
+    doxygen \
+    graphviz \
+    cmake \
+    zlib1g-dev \
+    pkg-config  && \
+    apt autoremove && apt clean && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV TAGLIB_SRC_ROOT=https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/taglib/1.13.1-1build1/
+WORKDIR /pkg
+ADD taglib-1.13.1-cmake-fix.patch .
+RUN curl -fsSLO ${TAGLIB_SRC_ROOT}/taglib_1.13.1.orig.tar.gz && \
+ curl -fsSLO ${TAGLIB_SRC_ROOT}/taglib_1.13.1-1build1.dsc && \
+ curl -fsSLO ${TAGLIB_SRC_ROOT}/taglib_1.13.1-1build1.debian.tar.xz
+RUN dpkg-source -x taglib_1.13.1-1build1.dsc 
+RUN patch -p0 < taglib-1.13.1-cmake-fix.patch
+RUN cd taglib-1.13.1 && dpkg-buildpackage -b -uc -us
