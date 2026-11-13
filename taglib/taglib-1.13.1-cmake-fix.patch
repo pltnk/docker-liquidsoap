@@ -1,0 +1,10 @@
+--- taglib-1.13.1-orig/debian/rules     2026-11-03 01:43:46.310396076 +0000
++++ taglib-1.13.1/debian/rules  2026-11-03 01:39:44.946852920 +0000
+@@ -21,6 +21,7 @@
+		-DLIB_INSTALL_DIR:PATH=/usr/lib/$(DEB_HOST_MULTIARCH) \
+		-DBUILD_SHARED_LIBS=ON \
+		-DBUILD_TESTING=ON \
++		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		$(NULL)
+
+ override_dh_installchangelogs:
